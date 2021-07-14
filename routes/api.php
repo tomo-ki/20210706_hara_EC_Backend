@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderProductController;
 
 Route::group([
     'middleware' => ['auth:api'],
@@ -14,3 +17,7 @@ Route::group([
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::get('user', [AuthController::class, 'me']);
 });
+
+Route::apiResource('/order', OrderController::class);
+Route::apiResource('/product', ProductController::class);
+Route::apiResource('/orderproduct', OrderProductController::class);
