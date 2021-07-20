@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasFactory;
+    protected $guarded = array('id');
+    
+    protected $fillable = [
+        'name', 'file_path'
+    ];
 }

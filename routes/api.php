@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\OrderProductController;
+use App\Http\Controllers\HistoryController;
 
 Route::group([
     'middleware' => ['auth:api'],
@@ -20,4 +20,4 @@ Route::group([
 
 Route::apiResource('/order', OrderController::class);
 Route::apiResource('/product', ProductController::class);
-Route::apiResource('/orderproduct', OrderProductController::class);
+Route::apiResource('/history', HistoryController::class);
