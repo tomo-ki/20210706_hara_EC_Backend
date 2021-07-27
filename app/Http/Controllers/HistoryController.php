@@ -24,10 +24,9 @@ class HistoryController extends Controller
     {
         $histories = History::all();
         foreach ($histories as $history) {
-            $order =  Order::where('id', $history->order_id)->first();
+            $order =  Order::where('uuid', $history->order_uuid)->first();
             $product = Product::where('id', $history->product_id)->first();
             $history->user_id = $order->user_id;
-            $history->uuid = $order->uuid;
             $history->name = $product->name;
             $history->created_at = $product->created_at;
             $history->image_path = $product->image_path;
@@ -37,5 +36,12 @@ class HistoryController extends Controller
         return response()->json([
             'data' => $histories
         ], 200);
+    }
+    public function store(Request $request)
+    {
+        $history = History::create($request->all());
+        return response()->json([
+            'data' => $history
+        ], 201);
     }
 }
